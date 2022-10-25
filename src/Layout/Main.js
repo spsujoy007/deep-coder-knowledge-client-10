@@ -12,11 +12,11 @@ const Main = () => {
 
             <Container>
             <Row>
-                <Col lg="3" className="bg-info">
+                <Col lg="2">
                     <LeftSideNav></LeftSideNav>
                 </Col>
 
-                <Col lg="9" className="bg-warning">
+                <Col lg="10">
                     <Outlet></Outlet>
                 </Col>
             </Row>
