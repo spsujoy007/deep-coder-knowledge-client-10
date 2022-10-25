@@ -24,7 +24,7 @@ export const routers = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
-                path: '/category/:id',
+                path: '/',
                 element: <Courses></Courses>
             },
             {

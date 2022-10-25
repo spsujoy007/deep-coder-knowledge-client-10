@@ -8,7 +8,7 @@ const Courses = () => {
     const {img, title, description} = course;
     return (
         <Card>
-      <Card.Img variant="top" src={img} />
+      <Card.Img variant="top" src={img} style={{height: '300px'}} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>
