@@ -7,7 +7,18 @@ const Courses = () => {
     const course = useLoaderData();
     const {img, title, description} = course;
     return (
-        
+        <Card>
+      <Card.Img variant="top" src={img} style={{height: '300px'}} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>
+            {description}
+        </Card.Text>
+        <Link to="/">
+            <Button variant="primary">Go back to home</Button>
+        </Link>
+      </Card.Body>
+    </Card>
     );
 };
 
