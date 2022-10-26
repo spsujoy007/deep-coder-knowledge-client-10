@@ -15,10 +15,10 @@ const CourseCard = ({course}) => {
           <Card.Text>
             {description.length > 150 ? description.slice(0, 150) + "..." : description}
           </Card.Text>
-          <Link to={`/course/${_id}`}>
-                <Button variant="primary">Course detail</Button>
-          </Link>
         </Card.Body>
+          <Link className="p-2" to={`/course/${_id}`}>
+                <Button variant="primary" style={{width: "100%"}}>Course detail</Button>
+          </Link>
       </Card>
     </div>
   );

@@ -3,15 +3,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const Register = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
   
-    const {createUser, updateUserProfile, emailVerify, googleSignIn} = useContext(AuthContext);
+    const {createUser, updateUserProfile, emailVerify, popUpSign} = useContext(AuthContext);
     
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -59,7 +60,15 @@ const Register = () => {
     }
 
     const handleGoogleSign = () => {
-        googleSignIn(googleProvider)
+        popUpSign(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+    }
+    const handleGithubSign = () => {
+        popUpSign(githubProvider)
         .then(result => {
             const user = result.user;
             console.log(user)
@@ -114,13 +123,13 @@ const Register = () => {
     </Form>
 
     {/* Google and Github athentication  */}
-    <div className="d-flex justify-content-center mt-5">
+    <h3 className="text-primary text-center mt-5">/or</h3><br />
+    <div className="d-flex justify-content-center ">
     <button onClick={handleGoogleSign} className="btn btn-outline-danger px-5 py-1 me-3"><h4><FaGoogle className="display2"></FaGoogle></h4></button>
 
-    <button  className="btn btn-outline-dark px-5 py-1"><h4>
+    <button onClick={handleGithubSign} className="btn btn-outline-dark px-5 py-1"><h4>
     <FaGithub className="display2"></FaGithub></h4></button>
     </div>
-
     </div>
   );
 };

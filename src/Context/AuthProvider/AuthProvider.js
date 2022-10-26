@@ -33,7 +33,7 @@ const AuthProvider = ({children}) => {
         return sendEmailVerification(auth.currentUser)
     }
 
-    const googleSignIn = (provider) => {
+    const popUpSign = (provider) => {
         return signInWithPopup(auth, provider)
     }
 
@@ -52,7 +52,7 @@ const AuthProvider = ({children}) => {
    
        },[])
 
-    const authInfo = {user, createUser, signIn, updateUserProfile, logOut, googleSignIn , emailVerify}
+    const authInfo = {user, createUser, signIn, updateUserProfile, logOut, popUpSign , emailVerify}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
