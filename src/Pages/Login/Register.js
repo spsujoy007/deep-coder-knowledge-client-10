@@ -2,12 +2,16 @@ import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
   
-    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const {createUser, updateUserProfile, emailVerify, googleSignIn} = useContext(AuthContext);
     
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -24,6 +28,8 @@ const Register = () => {
         console.log(user);
         form.reset();
         handleUpdateProfile(name, photoURL);
+        handleEmailVerify();
+        alert("Please verify your email address")
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -46,9 +52,25 @@ const Register = () => {
 }
 
 
+    const handleEmailVerify = () => {
+        emailVerify()
+        .then(() => {})
+        .catch(error => console.error(error))
+    }
+
+    const handleGoogleSign = () => {
+        googleSignIn(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+    }
+
 
   return (
-    <Form onSubmit={handleSubmit} className="px-5 mx-4">
+    <div>
+        <Form onSubmit={handleSubmit} className="px-5 mx-4">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Enter your full name</Form.Label>
         <Form.Control
@@ -90,6 +112,16 @@ const Register = () => {
         Register
       </Button>
     </Form>
+
+    {/* Google and Github athentication  */}
+    <div className="d-flex justify-content-center mt-5">
+    <button onClick={handleGoogleSign} className="btn btn-outline-danger px-5 py-1 me-3"><h4><FaGoogle className="display2"></FaGoogle></h4></button>
+
+    <button  className="btn btn-outline-dark px-5 py-1"><h4>
+    <FaGithub className="display2"></FaGithub></h4></button>
+    </div>
+
+    </div>
   );
 };
 

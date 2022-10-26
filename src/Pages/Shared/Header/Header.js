@@ -8,6 +8,8 @@ import './Header.css'
 import { FaUser } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import { FaSignOutAlt } from "react-icons/fa";
+
 
 const Header = () => {
   const {user, logOut} = useContext(AuthContext)
@@ -23,7 +25,7 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="mb-3" >
       <Container>
-        <Link to="/">
+        <Link to="/" className="headerTitle">
         <Navbar.Brand className="d-flex align-items-center">
         <img
               src={logo}
@@ -42,19 +44,19 @@ const Header = () => {
               <Link className='navlinks' to='/blog'>Blog</Link>
             </div>
           </Nav>
-          <Nav>
-            <Nav.Link 
+          <Nav className="d-flex align-items-center">
+            <Nav.Link  
             >
             { 
                             user?.uid ?
                             <>
+                            <button className='btn btn-primary text-light' onClick={handleLogOut}>Log out <FaSignOutAlt></FaSignOutAlt> </button>
                             <span> {user?.displayName}</span>
-                            <button onClick={handleLogOut}>Log Out</button>
                             </>
                             :
                             <>
-                            <Link to='/login'>Login</Link>
-                            <Link to='/register'>Register</Link>
+                            <Link className="btn btn-outline-primary me-2" to='/login'>Login</Link>
+                            <Link className="btn btn-outline-dark" to='/register'>Register</Link>
                             </>
                            }
             </Nav.Link>
@@ -63,7 +65,8 @@ const Header = () => {
                             {
                                 user?.photoURL ?
                                 <Image
-                                        style ={{height: '30px', width: '30px'}} roundedCircle 
+
+                                        style ={{height: '35px', width: '35px', border: '3px solid #ef224e', borderRadius: "50px"}} roundedCircle 
                                         src={user.photoURL}      
                                     ></Image>
                                 : <FaUser></FaUser>
