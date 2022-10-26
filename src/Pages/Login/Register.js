@@ -31,7 +31,7 @@ const Register = () => {
       });
   };
 
-  const handleUpdateProfile=(name, photoURL)=>{
+  const handleUpdateProfile = (name, photoURL)=>{
     const profile ={
         displayName: name,
         photoURL: photoURL

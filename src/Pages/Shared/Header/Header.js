@@ -1,17 +1,24 @@
-import React from 'react';
-import { useContext } from 'react';
 import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/brand/logo.png'
-import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import './Header.css'
 import { FaUser } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
-  const {user} = useContext(AuthContext);
+  const {user, logOut} = useContext(AuthContext)
+  console.log(user);
+
+  const handleLogOut= () => {
+    console.log('Clicked by sp')
+    logOut()
+    .then(() => {})
+    .catch(error => console.error(error))
+  }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="mb-3" >
@@ -37,12 +44,12 @@ const Header = () => {
           </Nav>
           <Nav>
             <Nav.Link 
-            to="/home">
+            >
             { 
                             user?.uid ?
                             <>
                             <span> {user?.displayName}</span>
-                            <button>Log Out</button>
+                            <button onClick={handleLogOut}>Log Out</button>
                             </>
                             :
                             <>
@@ -55,17 +62,12 @@ const Header = () => {
             <Link to='/profile'>
                             {
                                 user?.photoURL ?
-                            
                                 <Image
-
-                                        style ={{height: '30px'}} roundedCircle 
-                                        src={user.photoURL}
-                                    
+                                        style ={{height: '30px', width: '30px'}} roundedCircle 
+                                        src={user.photoURL}      
                                     ></Image>
                                 : <FaUser></FaUser>
-
                             }
-
                         </Link>
 
           </Nav>
