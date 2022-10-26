@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,6 +8,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/brand/logo.png'
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import './Header.css'
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const {user} = useContext(AuthContext);
@@ -50,9 +52,22 @@ const Header = () => {
                            }
             </Nav.Link>
 
-            <Nav.Link eventKey={2} href="#memes">
-              
-            </Nav.Link>
+            <Link to='/profile'>
+                            {
+                                user?.photoURL ?
+                            
+                                <Image
+
+                                        style ={{height: '30px'}} roundedCircle 
+                                        src={user.photoURL}
+                                    
+                                    ></Image>
+                                : <FaUser></FaUser>
+
+                            }
+
+                        </Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

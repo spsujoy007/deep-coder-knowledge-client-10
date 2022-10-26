@@ -14,7 +14,7 @@ const Courses = () => {
         <Card.Text>
             {description}
         </Card.Text>
-        <p className='fw-bold text-primary mb-1'>Course Duration: {duration}</p>
+        <p className='fw-bold text-primary mb-1'>Course Duration: {duration} year</p>
         <p>Total video: {module}</p>
         <Link to="/">
             <Button variant="primary">Go back to home</Button>

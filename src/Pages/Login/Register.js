@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const handleSubmit = (event) => {
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+  
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    
+    const handleSubmit = (event) => {
       event.preventDefault();
       const form = event.target;
       const name = form.name.value;
@@ -11,7 +17,35 @@ const Register = () => {
       const email  = form.email.value;
       const password = form.password.value
       console.log(name, photoURL, email, password)
+      createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        setSuccess(user)
+        console.log(user);
+        form.reset();
+        handleUpdateProfile(name, photoURL);
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
   };
+
+  const handleUpdateProfile=(name, photoURL)=>{
+    const profile ={
+        displayName: name,
+        photoURL: photoURL
+    }
+    updateUserProfile(profile)
+    .then(()=>{
+
+    })
+    .catch(()=>{
+        console.error(error);
+    })
+}
+
+
 
   return (
     <Form onSubmit={handleSubmit} className="px-5 mx-4">
@@ -50,6 +84,8 @@ const Register = () => {
           required
         />
       </Form.Group>
+      {success && <p className="text-success">Login successful</p>}
+      <p className="text-danger">{error}</p>
       <Button variant="primary" type="submit">
         Register
       </Button>
