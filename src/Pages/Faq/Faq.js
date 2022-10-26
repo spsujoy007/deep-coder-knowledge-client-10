@@ -3,6 +3,7 @@ import React from "react";
 const Faq = () => {
   return (
     <div>
+        <h3 className="text-center mb-4 text-danger">Some usefull questions</h3>
       <div>
         <h4 className="ms-4 text-primary">1. How to become a developer?</h4>
         <p className="ms-5">

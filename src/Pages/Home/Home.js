@@ -5,8 +5,7 @@ import CourseCard from '../CourseCard/CourseCard';
 const Home = () => {
     const allCourses = useLoaderData();
     return (
-        <div>
-            <h2>Total courses is: {allCourses.length}</h2>
+        <div className='mt-3'>
             <div className="container">
             <div className='row g-2'>
                 {

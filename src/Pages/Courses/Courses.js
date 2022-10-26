@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 
 const Courses = () => {
     const course = useLoaderData();
-    const {img, title, description} = course;
+    const {img, title, description, module, duration} = course;
     return (
         <Card>
       <Card.Img variant="top" src={img} style={{height: '300px'}} />
@@ -14,6 +14,8 @@ const Courses = () => {
         <Card.Text>
             {description}
         </Card.Text>
+        <p className='fw-bold text-primary mb-1'>Course Duration: {duration}</p>
+        <p>Total video: {module}</p>
         <Link to="/">
             <Button variant="primary">Go back to home</Button>
         </Link>

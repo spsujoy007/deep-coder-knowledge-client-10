@@ -2,17 +2,18 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import './CourseCard.css'
 
 const CourseCard = ({course}) => {
     const {_id, title, img, description} = course
   return (
     <div className="col-md-4" >
-      <Card>
+      <Card className="mycard">
         <Card.Img variant="top" src={img} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>
-            {description}
+            {description.length > 150 ? description.slice(0, 150) + "..." : description}
           </Card.Text>
           <Link to={`/course/${_id}`}>
                 <Button variant="primary">Course detail</Button>
