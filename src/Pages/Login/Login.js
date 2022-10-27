@@ -1,14 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
-    
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
   const {signIn} = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  
   
   const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,9 +26,16 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             form.reset()
-            navigate('/')
+            setSuccess(true)
+            setError('')
+            if(user.emailVerified){
+              navigate(from, {replace: true});
+            }
+            else{
+              alert('your email is not verified.please')
+            }
         })
-        .cath(error => console.error(error))
+        .catch(error => setError(error))
     };
 
   return (
@@ -37,6 +49,8 @@ const Login = () => {
         <Form.Label>Password</Form.Label>
         <Form.Control name="password" type="password" placeholder="Password" required/>
       </Form.Group>
+      <p className="text-success">{success}</p>
+      <p className="text-danger">{error}</p>
       <Button variant="primary" type="submit">
         Login
       </Button>
