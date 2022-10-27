@@ -1,12 +1,14 @@
-import { Profiler } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
+import Checkout from "../../Pages/Checkout/Checkout";
 import Courses from "../../Pages/Courses/Courses";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
+import Profile from "../../Pages/Profile/Profile";
 
 export const routers = createBrowserRouter([
     {
@@ -45,8 +47,17 @@ export const routers = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <Profiler></Profiler>
+                element: <Profile></Profile>
+            },
+            {
+                path: '/checkout/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+                element: <Checkout></Checkout>
             }
         ]
+    },
+    {
+        path: "*",
+        element: <ErrorPage></ErrorPage>
     }
 ])

@@ -2,10 +2,11 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { FaCheckCircle, FaAngleLeft } from 'react-icons/fa';
 
 const Courses = () => {
     const course = useLoaderData();
-    const {img, title, description, module, duration} = course;
+    const {_id, img, title, description, module, duration} = course;
     return (
         <Card>
       <Card.Img variant="top" src={img} style={{height: '300px'}} />
@@ -16,8 +17,12 @@ const Courses = () => {
         </Card.Text>
         <p className='fw-bold text-primary mb-1'>Course Duration: {duration} year</p>
         <p>Total video: {module}</p>
+        <Link to={`/checkout/${_id}`}>
+            <Button variant="success me-3"><FaCheckCircle className='me-1'></FaCheckCircle> Get premium access.</Button>
+        </Link>
+
         <Link to="/">
-            <Button variant="primary">Go back to home</Button>
+            <Button variant="outline-dark"><FaAngleLeft className='me-1'></FaAngleLeft> Back to home</Button>
         </Link>
       </Card.Body>
     </Card>

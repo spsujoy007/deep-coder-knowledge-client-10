@@ -16,7 +16,6 @@ const Header = () => {
   console.log(user);
 
   const handleLogOut= () => {
-    console.log('Clicked by sp')
     logOut()
     .then(() => {})
     .catch(error => console.error(error))
@@ -32,12 +31,12 @@ const Header = () => {
               height="40"
               alt="React Bootstrap logo"
             />
-            <p className='m-0'>DEEP CODER KNOWLEDGE</p>
+            <p className='m-0'>DEEP CODER</p>
         </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             <div>
               <Link className='navlinks' to='/'>Courses</Link>
               <Link className='navlinks' to='/faq'>FAQ</Link>
@@ -50,8 +49,8 @@ const Header = () => {
             { 
                             user?.uid ?
                             <>
-                            <button className='btn btn-primary text-light' onClick={handleLogOut}>Log out <FaSignOutAlt></FaSignOutAlt> </button>
-                            <span> {user?.displayName}</span>
+                            <button className='btn btn-primary text-light mx-2' onClick={handleLogOut}>Log out <FaSignOutAlt></FaSignOutAlt> </button>
+                            <span style={{color: "#0d6efd"}}> {user?.displayName}</span>
                             </>
                             :
                             <>
@@ -66,7 +65,7 @@ const Header = () => {
                                 user?.photoURL ?
                                 <Image
 
-                                        style ={{height: '35px', width: '35px', border: '3px solid #ef224e', borderRadius: "50px"}} roundedCircle 
+                                        style ={{height: '35px', width: '35px', border: '2px solid #0d6efd', borderRadius: "50px"}} roundedCircle 
                                         src={user.photoURL}      
                                     ></Image>
                                 : <FaUser></FaUser>

@@ -1,11 +1,12 @@
 import React, { useContext, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Profile = () => {
     const {user}= useContext(AuthContext)
     const [name, setName]=useState(user.displayName);
+    console.log(name)
     const photoURLRef = useRef(user.photoURL)
 
     const handleSubmit = event =>{
