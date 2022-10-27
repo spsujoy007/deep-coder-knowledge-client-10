@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/brand/logo.png'
 import './Header.css'
 import { FaUser } from "react-icons/fa";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { FaSignOutAlt } from "react-icons/fa";
 import Switch from '@mui/material/Switch';
+import LeftSideNav from '../LeftSideNav/LeftSideNav';
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const Header = () => {
@@ -78,6 +79,9 @@ const Header = () => {
                         </Link>
 
           </Nav>
+          <div className='d-lg-none'>
+            <LeftSideNav></LeftSideNav>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
