@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/brand/logo.png'
 import './Header.css'
 import { FaUser } from "react-icons/fa";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { FaSignOutAlt } from "react-icons/fa";
-
+import Switch from '@mui/material/Switch';
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const Header = () => {
   const {user, logOut} = useContext(AuthContext)
@@ -20,6 +21,8 @@ const Header = () => {
     .then(() => {})
     .catch(error => console.error(error))
   }
+
+
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="mb-3" >
@@ -37,10 +40,11 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <div>
+            <div className="d-flex align-items-center">
               <Link className='navlinks' to='/'>Courses</Link>
               <Link className='navlinks' to='/faq'>FAQ</Link>
               <Link className='navlinks' to='/blog'>Blog</Link>
+              <Switch{...label} defaultChecked />
             </div>
           </Nav>
           <Nav className="d-flex align-items-center">
@@ -66,7 +70,8 @@ const Header = () => {
                                 <Image
 
                                         style ={{height: '35px', width: '35px', border: '2px solid #0d6efd', borderRadius: "50px"}} roundedCircle 
-                                        src={user.photoURL}      
+                                        src={user.photoURL} 
+                                        title={user.displayName}     
                                     ></Image>
                                 : <FaUser></FaUser>
                             }
