@@ -14,12 +14,13 @@ const LeftSideNav = () => {
 
     return (
         <div>
-            <h5 className='mb-3'>Total categories: {categories.length}</h5>
+            <h5 className='my-4 '>Total categories: {categories.length}</h5>
             <ListGroup>
             {
-                categories.map(category =><p
+                categories.map(category =><p 
+                    className="mb-2"
                     key={category.id}
-                > <Link className="lists" to={`/course/${category.id}`}><ListGroup.Item>{category.title}</ListGroup.Item></Link> </p>)
+                > <Link className="lists rounded-3" to={`/course/${category.id}`}><ListGroup.Item>{category.title}</ListGroup.Item></Link> </p>)
             }
             </ListGroup>
         </div>

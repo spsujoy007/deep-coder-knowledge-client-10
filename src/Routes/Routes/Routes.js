@@ -8,6 +8,7 @@ import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
+import PrivetRote from "../../Pages/PrivetRoute/PrivetRote";
 import Profile from "../../Pages/Profile/Profile";
 
 export const routers = createBrowserRouter([
@@ -47,12 +48,12 @@ export const routers = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <Profile></Profile>
+                element: <PrivetRote><Profile></Profile></PrivetRote>
             },
             {
                 path: '/checkout/:id',
                 loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
-                element: <Checkout></Checkout>
+                element: <PrivetRote><Checkout></Checkout></PrivetRote>
             }
         ]
     },

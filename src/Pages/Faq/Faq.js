@@ -4,6 +4,8 @@ const Faq = () => {
   return (
     <div>
         <h3 className="text-center mb-4 text-danger">Frequently asked questions</h3>
+      
+      <div className="px-5 mx-5">
       <div>
         <h4 className="ms-4 text-primary">1. How to become a developer?</h4>
         <p className="ms-5">
@@ -40,6 +42,7 @@ const Faq = () => {
           components. It is maintained by Meta and a community of individual
           developers and companies.
         </p>
+      </div>
       </div>
     </div>
   );

@@ -123,8 +123,7 @@ const Register = () => {
     </Form>
 
     {/* Google and Github athentication  */}
-    <h3 className="text-primary text-center mt-5">/or</h3><br />
-    <div className="d-flex justify-content-center ">
+    <div className="d-flex justify-content-center mt-3">
     <button onClick={handleGoogleSign} className="btn btn-outline-danger px-5 py-1 me-3"><h4><FaGoogle className="display2"></FaGoogle></h4></button>
 
     <button onClick={handleGithubSign} className="btn btn-outline-dark px-5 py-1"><h4>

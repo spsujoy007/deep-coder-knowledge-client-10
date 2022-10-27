@@ -6,7 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = () => {
-    const notify = () => toast("Congratulations! Now you get premium course");
+    const notify = () => toast.success("Congratulations! Now you get premium course", {
+      theme: "colored"
+    })
   const course = useLoaderData();
   const { title, description, img } = course;
   return (
