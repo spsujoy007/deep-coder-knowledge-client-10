@@ -4,11 +4,13 @@ import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const Register = () => {
+    useTitle('Register')
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
   
@@ -21,7 +23,7 @@ const Register = () => {
       const photoURL = form.photoURL.value;
       const email  = form.email.value;
       const password = form.password.value
-      console.log(name, photoURL, email, password)
+
       createUser(email, password)
       .then(result => {
         const user = result.user;
@@ -38,7 +40,7 @@ const Register = () => {
       });
   };
 
-  const handleUpdateProfile = (name, photoURL)=>{
+  const handleUpdateProfile = (name, photoURL) => {
     const profile ={
         displayName: name,
         photoURL: photoURL

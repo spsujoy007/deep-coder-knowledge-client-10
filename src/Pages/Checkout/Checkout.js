@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from "../../hooks/useTitle";
 
 const Checkout = () => {
     const notify = () => toast.success("Congratulations! Now you get premium course", {
@@ -11,6 +12,7 @@ const Checkout = () => {
     })
   const course = useLoaderData();
   const { title, description, img } = course;
+  useTitle(`checkout-${title}`)
   return (
     <Card>
       <Card.Header>Lets learn something new</Card.Header>

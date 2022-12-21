@@ -3,10 +3,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaCheckCircle, FaAngleLeft } from 'react-icons/fa';
+import useTitle from '../../hooks/useTitle';
 
 const Courses = () => {
     const course = useLoaderData();
     const {_id, img, title, description, module, duration} = course;
+    useTitle(`${title}`)
     return (
         <Card>
       <Card.Img variant="top" src={img} style={{height: '300px'}} />

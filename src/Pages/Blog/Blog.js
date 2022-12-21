@@ -1,7 +1,9 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import useTitle from "../../hooks/useTitle";
 
 const Blog = () => {
+  useTitle('Blog')
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
