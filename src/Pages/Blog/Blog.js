@@ -5,7 +5,7 @@ import useTitle from "../../hooks/useTitle";
 const Blog = () => {
   useTitle('Blog')
   return (
-    <Accordion defaultActiveKey="0">
+    <Accordion defaultActiveKey="0" className="mt-5 pt-5">
       <Accordion.Item eventKey="0">
         <Accordion.Header>1. What is CORS?</Accordion.Header>
         <Accordion.Body>
