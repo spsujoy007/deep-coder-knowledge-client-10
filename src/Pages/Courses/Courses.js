@@ -10,7 +10,7 @@ const Courses = () => {
     const {_id, img, title, description, module, duration} = course;
     useTitle(`${title}`)
     return (
-        <Card>
+        <Card className='mt-5 pt-3'>
       <Card.Img variant="top" src={img} style={{height: '300px'}} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>

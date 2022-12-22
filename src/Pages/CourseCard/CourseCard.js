@@ -7,7 +7,7 @@ import './CourseCard.css'
 const CourseCard = ({course}) => {
     const {_id, title, img, description} = course
   return (
-    <div className="col-md-4" >
+    <div className="col-md-4 mt-5" >
       <Card className="mycard">
         <Card.Img variant="top" src={img} />
         <Card.Body>

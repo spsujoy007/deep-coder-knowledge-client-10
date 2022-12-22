@@ -14,7 +14,8 @@ const Checkout = () => {
   const { title, description, img } = course;
   useTitle(`checkout-${title}`)
   return (
-    <Card>
+    <div className="mt-5 mt-3">
+      <Card>
       <Card.Header>Lets learn something new</Card.Header>
       <Card.Body className="text-center">
       <Card.Img variant="top" src={img} style={{width: '300px'}} />
@@ -26,6 +27,7 @@ const Checkout = () => {
         <ToastContainer />
       </Card.Body>
     </Card>
+    </div>
   );
 };
 

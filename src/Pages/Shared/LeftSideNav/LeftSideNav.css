@@ -1,3 +1,8 @@
 .lists{
     text-decoration: none;
 }
+.mybtns:hover {
+    background-color: #0c6edd;
+    color: white;
+    transition: all 0.5s;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './LeftSideNav.css'
 
@@ -13,14 +13,14 @@ const LeftSideNav = () => {
     } , [])
 
     return (
-        <div>
+        <div className='pt-5 mt-3'>
             <h5 className='my-4'>Total Course: {categories.length}</h5>
             <ListGroup>
             {
                 categories.map(category =><p 
                     className="mb-2"
                     key={category.id}
-                > <Link className="lists rounded-3" to={`/course/${category.id}`}><ListGroup.Item>{category.title}</ListGroup.Item></Link> </p>)
+                > <NavLink className="lists  rounded-3" to={`/course/${category.id}`}><ListGroup.Item className="mybtns">{category.title}</ListGroup.Item></NavLink> </p>)
             }
             </ListGroup>
         </div>
