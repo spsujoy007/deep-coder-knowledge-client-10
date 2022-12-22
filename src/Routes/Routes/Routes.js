@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import BannerItem from "../../Pages/BannerItem/BannerItem";
 import Blog from "../../Pages/Blog/Blog";
 import Checkout from "../../Pages/Checkout/Checkout";
 import Courses from "../../Pages/Courses/Courses";
@@ -18,6 +19,10 @@ export const routers = createBrowserRouter([
         children: [
             {
                 path: '/',
+                element: <BannerItem></BannerItem>
+            },
+            {
+                path: '/courses',
                 loader: () => fetch('https://deep-coder.vercel.app/courses'),
                 element: <Home></Home>
             },
@@ -30,7 +35,7 @@ export const routers = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
-                path: '/',
+                path: '/courses',
                 element: <Courses></Courses>
             },
             {

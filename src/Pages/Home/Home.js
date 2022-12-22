@@ -7,7 +7,7 @@ const Home = () => {
     useTitle('Home')
     const allCourses = useLoaderData();
     return (
-        <div className='mt-3'>
+        <div className='mt-5 pt-5'>
             <div className="container">
             <div className='row g-2'>
                 {

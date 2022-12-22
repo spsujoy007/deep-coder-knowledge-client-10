@@ -29,7 +29,7 @@ const Header = () => {
 
     return (
         // <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="mb-3" >
-        <Navbar collapseOnSelect expand="lg" bg={theme ? "light" : "warning"} variant={theme ? "light" : "dark"} className="mb-3" >
+        <Navbar collapseOnSelect expand="lg" bg={theme ? "light" : "warning"} variant={theme ? "light" : "dark"} className="mb-3 fixed-top" >
       <Container>
         <Link to="/" className="headerTitle">
         <Navbar.Brand className="d-flex align-items-center">
@@ -45,7 +45,8 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             <div className="d-flex align-items-center">
-              <Link className='navlinks' to='/'>Courses</Link>
+              <Link className='navlinks' to='/'>Home</Link>
+              <Link className='navlinks' to='/courses'>Courses</Link>
               <Link className='navlinks' to='/faq'>FAQ</Link>
               <Link className='navlinks' to='/blog'>Blog</Link>
               <Switch{...label} onClick={() => setTheme(!theme)} />
